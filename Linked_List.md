@@ -1,4 +1,4 @@
-# 这不好使啊
+#
 ## two-pointer in linked list
 '''
 // Initialize slow & fast pointers
