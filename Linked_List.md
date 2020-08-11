@@ -1,13 +1,12 @@
-#
 ## two-pointer in linked list
 
-'''
+```
 // Initialize slow & fast pointers
 ListNode slow = head;
 ListNode fast = head;
 
- //Change this condition to fit specific problem.
- //Attention: remember to avoid null-pointer error
+//Change this condition to fit specific problem.
+//Attention: remember to avoid null-pointer error
 
 while (slow != null && fast != null && fast.next != null) {
     slow = slow.next;           // move slow pointer one step each time
@@ -17,7 +16,7 @@ while (slow != null && fast != null && fast.next != null) {
     }
 }
 return false;   // change return value to fit specific problem
-'''
+```
 
 
 
