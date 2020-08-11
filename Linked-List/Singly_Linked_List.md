@@ -119,3 +119,63 @@ class MyLinkedList:
         
         self.size-=1
 ```
+### Problem 1 - reverse linked list
+>come from leetcode
+
+*The idea is that gradually move each one after the head to the start.*
+
+For example: a list is \[1,2,3,4,5]
+
+it becomes: \[2,1,3,4,5]\> \[3,2,1,4,5] \> \[4,3,2,1,5] \> \[5,4,3,2,1]
+
+```
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        p = head
+        if p is None or p.next is None:
+            return head
+        while p.next is not None:
+            cur = p.next
+            p.next = cur.next
+            cur.next = head
+            head = cur
+        return head 
+```
+### Remove Linked List Elements
+> from leetcode
+
+*remove all nodes that have value val*
+
+For example:
+
+\[1,2,3,4,5,6] remove 6 \> \[1,2,3,4,5]
+
+Here is my solution:
+```
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        
+        # solve the case [val,val,val...a,b,c,d]
+        while head is not None and head.val == val :
+            head = head.next
+        
+        #solve the case [] or [n] 
+        #the order matters since [] can happen after action 1
+        p = head
+        if p is None or (p.next is None and p.val !=val):
+            return head
+            
+        #solve the general case[a,b,c,d,val,s,f,g]
+        while True:
+            if p and p.next:
+                # in case there are successive dupilcates in the middle like [1,2,3,3,3,3,3,4,5]
+                while p.next.val == val:
+                    p.next = p.next.next
+                    if p.next is None:
+                         break
+            if p.next is None:
+                break
+            p = p.next
+        return head
+```
+#### Dummy head
