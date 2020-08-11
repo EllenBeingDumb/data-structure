@@ -1,6 +1,6 @@
-# Two-pointer in Linked List
-> come from leetcode 
+# Two-pointer in Linked List 
 ## Problem 1 - Linked list cycle
+> come from leetcode 
 `To determine whether a linked list has cycle in it`
 
 We use two pointers - one is slower and one is faster. If the list has a cycle, the two pointers will meet eventually. 
@@ -16,18 +16,20 @@ class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         if head is None or head.next is None:
             return False
+        # Two pointers
         slow = head.next
         fast = head.next.next 
         while True:
             if slow==fast:
                 return True
-            if slow and slow.next and fast and fast.next:
+            if slow and slow.next and fast and fast.next: # They exist, not None
                 slow = slow.next
                 fast = fast.next.next
             else:
                 return False
 ```
 ## Problem 2 - Intersection of two Linked list
+>come from leetcode 
 `idea of solution` I only think of the brute Force solution, I check the solution provided by leetcode which use the two pointers method:
 1. Maintain two pointers pApA and pBpB initialized at the head of A and B, respectively. Then let them both traverse through the lists, one node at a time.
 2. When pApA reaches the end of a list, then redirect it to the head of B (yes, B, that's right.); similarly when pBpB reaches the end of a list, redirect it the head of A.
@@ -43,24 +45,28 @@ class ListNode:
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+    
+        # two pointers
         pA,a = headA,headA
         pB,b = headB,headB
+        # The special case when the list is empty 
         if headA is None or headB is None:
             return None
+        # Test whether the two lists have intersection 
         while True:
             if a is None or a.next is None:
-                lastA = a
+                lastA = a  # The last node of A
                 break
             a = a.next
         while True:
             if b is None or b.next is None:
-                lastB = b
+                lastB = b  # The last node of B
                 break
             b = b.next
         if lastA != lastB:
             return None 
         
-        while True: 
+        while True: # loop through the lists
             if pA == pB:
                 return pA
             pA = headB if pA is None or pA.next is None else pA.next 
