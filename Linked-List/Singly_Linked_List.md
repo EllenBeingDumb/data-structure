@@ -1,8 +1,11 @@
-### The linked list i designed
+# Singly Linked List
+### Basic information:
+Each node in a singly-linked list contains not only the value but also a reference field to link to the next node. By this way, the singly-linked list organizes all the nodes in a sequence.
 
+### The code I wrote to design a singly linked list:
 ```
 class Node:
-    
+    // node object
     def __init__(self,val):
         self.val=val
         self.next = None
